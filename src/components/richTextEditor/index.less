@@ -1,0 +1,41 @@
+.editor-container {
+    border: 1px solid #aaa;
+    border-radius: 10px;
+
+    .editor-header {
+        border-bottom: 1px solid #aaa;
+        padding: 20px;
+
+        button {
+            height: 32px;
+            padding: 0 20px;
+            border: 1px solid #434343;
+            border-radius: 2px;
+            background-color: transparent;
+            transition: all 0.5s;
+            cursor: pointer;
+        }
+
+        button:hover {
+            border: 1px solid cyan;
+            color: cyan;
+        }
+
+        .active {
+            border: 1px solid cyan;
+            color: cyan;
+        }
+
+        .ant-row {
+            .ant-form-item {
+                margin-bottom: 0;
+                line-height: 1;
+            } 
+        }
+    }
+
+    .editor-content {
+        min-height: 500px;
+        padding: 20px;
+    }
+}
