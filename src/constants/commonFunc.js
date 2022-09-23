@@ -11,3 +11,8 @@ export function getModalTitle(modalType) {
             return '';
     }
 }
+
+/**
+ * 根据列表或者映射获取Select组件的下拉选项
+ * 
+ */

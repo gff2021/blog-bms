@@ -29,14 +29,12 @@ const Admin = (props) => {
 				<Layout>
 					<AdminHeader user={user} />
 					<Content className='admin-content'>
-						<div className="admin-content-container">
-							<Switch>
-								{
-									mapMenuListToRoutes(menuList)
-								}
-								<Redirect to='/admin/home' />
-							</Switch>
-						</div>
+						<Switch>
+							{
+								mapMenuListToRoutes(menuList)
+							}
+							<Redirect to='/admin/home' />
+						</Switch>
 					</Content>
 					<Footer className='admin-footer'>
 						<span>Copyright</span>
