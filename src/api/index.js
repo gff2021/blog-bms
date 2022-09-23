@@ -1,5 +1,5 @@
 /* 封装接口函数 */
-import ajax from './ajax';
+import request from 'request';
 import jsonp from 'jsonp';
 
 const baseURL = '/admin-blog-cms';
@@ -7,7 +7,7 @@ const baseURL = '/admin-blog-cms';
 // 发送登陆请求
 export const reqLogin = (params) => {
     return new Promise((resolve, reject) => {
-        ajax.postJson(baseURL + '/login', params).then((output) => {
+        request.postJson(baseURL + '/login', params).then((output) => {
             resolve(output);
         }).catch((err) => {
             reject(err);

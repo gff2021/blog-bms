@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Modal, Form, Input, Select, Button, Space, Tag, Row, Col } from 'antd';
 import { ExclamationCircleTwoTone } from '@ant-design/icons';
+import moment from 'moment';
 import { EditorState, ContentState, convertToRaw, convertFromHTML } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import RichTextEditor from '@/components/richTextEditor';
 import { reqCreateArtical, reqUpdateArtical } from '@/api/articalManage';
-import { articalStatusDic } from '@/constants/dictionary';
-import { getModalTitle } from '@/constants/commonFunc';
-import moment from 'moment';
+import { getOptions } from 'commonFunction';
+import { modalTitleDic, articalStatusList } from '../../constants';
 
 const FormItem = Form.Item;
 const { Option } = Select;
@@ -110,11 +110,12 @@ const CreateModal = (props) => {
 			<span>提示</span>
 		</div>
 	)
+	const statusOptions = getOptions(articalStatusList);
 
 	return (
 		<div>
 			<Modal
-				title={getModalTitle(modalType)}
+				title={modalTitleDic[modalType]}
 				visible={articalModalVisible}
 				width={1300}
 				footer={null}
@@ -161,13 +162,11 @@ const CreateModal = (props) => {
 								labelCol={{ span: 4 }}
 								wrapperCol={{ span: 18 }}
 								rules={[{ required: true, message: '请选择状态' }]}
-								initialValue={modalType === 'check' || modalType === 'update' ? (recordData.status ? recordData.status : null) : null}
+								initialValue={modalType === 'check' || modalType === 'update' ? (recordData.status ? recordData.status : '') : ''}
 							>
 								<Select allowClear>
 									{
-										articalStatusDic.map((item) => {
-											return <Option key={item.value} value={item.value}>{item.description}</Option>
-										})
+										statusOptions
 									}
 								</Select>
 							</FormItem>

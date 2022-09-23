@@ -1,7 +1,7 @@
 import { Modal, Form, Input, Button, Space, Row } from 'antd';
 import moment from 'moment';
 import { reqCreateJournal, reqUpdateJournal } from '@/api/journal';
-import { getModalTitle } from '@/constants/commonFunc';
+import { modalTitleDic } from '../constants';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -48,7 +48,7 @@ const JournalModal = (props) => {
 
 	return (
 		<Modal
-			title={getModalTitle(modalType)}
+			title={modalTitleDic[modalType]}
 			width={800}
 			visible={modalVisible}
 			onCancel={closeModal}

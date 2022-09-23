@@ -3,8 +3,8 @@ import { Modal, Form, Input, Space, Button, Row, Tag, Select } from 'antd';
 import { SketchPicker } from 'react-color';
 import moment from 'moment';
 import { reqCreateTag, reqUpdateTag } from '@/api/tagManage';
-import { tagStatusDic } from '@/constants/dictionary';
-import { getModalTitle } from '@/constants/commonFunc';
+import { getOptions } from 'commonFunction';
+import { modalTitleDic, tagStatusList } from '../../constants';
 
 const FormItem = Form.Item;
 const { Option } = Select;
@@ -74,9 +74,11 @@ const CreateModal = (props) => {
 		})
 	}
 
+	const statusOptions = getOptions(tagStatusList);
+
 	return (
 		<Modal
-			title={getModalTitle(modalType)}
+			title={modalTitleDic[modalType]}
 			width={600}
 			visible={modalVisible}
 			onCancel={closeModal}
@@ -109,7 +111,7 @@ const CreateModal = (props) => {
 				<FormItem
 					label='状态'
 					name='status'
-					initialValue={modalType === 'create' ? null : recordData.status}
+					initialValue={modalType === 'create' ? '' : recordData.status}
 					rules={
 						[
 							{
@@ -121,9 +123,7 @@ const CreateModal = (props) => {
 				>
 					<Select>
 						{
-							tagStatusDic.map((item) => {
-								return <Option key={item.value} value={item.value}>{item.description}</Option>
-							})
+							statusOptions
 						}
 					</Select>
 				</FormItem>

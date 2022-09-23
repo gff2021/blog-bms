@@ -1,4 +1,8 @@
-/* 对axios进行二次封装 */
+/**
+ * @description 基于axios进行封装的接口请求模块
+ * @author Guff <3204966069@qq.com>
+ */
+
 import axios from 'axios';
 import { message } from 'antd';
 
@@ -20,7 +24,7 @@ axios.interceptors.response.use(function (response) {
 	return Promise.reject(error)
 });
 
-class Ajax {
+class Request {
 	getParams = (url, params) => {
 		return new Promise((resolve, reject) => {
 			axios.get(url, { params }).then((data) => {
@@ -42,4 +46,4 @@ class Ajax {
 	}
 }
 
-export default new Ajax();
+export default new Request();

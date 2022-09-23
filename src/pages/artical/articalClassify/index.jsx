@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { Table, Tag, Button, Space, Modal } from 'antd';
 import TagModal from './tagModal';
 import { reqQueryTags, reqDeleteTags } from '@/api/tagManage';
+import { getTextByValue } from 'commonFunction';
+import { tagStatusList } from '../../constants';
 import './index.less';
-import { tagStatusDic } from '@/constants/dictionary';
 
 const { confirm } = Modal;
 
@@ -118,10 +119,7 @@ const ArticalClassify = () => {
 			dataIndex: 'status',
 			align: 'center',
 			render: (...args) => {
-				const dicItem = tagStatusDic.find((item) => {
-					return args[0] === item.value
-				});
-				return dicItem && dicItem['description'];
+				return getTextByValue(args[0], tagStatusList);
 			}
 		},
 		{

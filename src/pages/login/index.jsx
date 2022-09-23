@@ -4,10 +4,10 @@ import {
 	MailOutlined,
 	LockFilled,
 } from '@ant-design/icons';
-import { reqLogin } from '../../api/index';
-import storage from '../../utils/storage';
+import { reqLogin } from '@/api/index';
+import storage from '@/utils/storage';
 import './index.less';
-import logo from '../../assets/images/loginLogo.jpg';
+import logo from '@/assets/images/loginLogo.jpg';
 
 const FormItem = Form.Item;
 

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Form, Row, Col, Input, Space, Button, Card, Table } from 'antd';
+import { Form, Row, Col, Input, Space, Button, Card, Table, Select } from 'antd';
 import AlbumModal from './albumModal';
+import { getOptions } from 'commonFunction';
+import { albumStatusList } from '../../constants';
 
 const FormItem = Form.Item;
 const formItemLayout = {
@@ -49,6 +51,7 @@ const AlbumManage = () => {
 			}
 		},
 	];
+	const statusOptions = getOptions(albumStatusList);
 
 	return (
 		<div>
@@ -61,8 +64,12 @@ const AlbumManage = () => {
 							</FormItem>
 						</Col>
 						<Col span={8}>
-							<FormItem label='状态' name='status' {...formItemLayout}>
-								<Input />
+							<FormItem label='状态' name='status' {...formItemLayout} initialValue=''>
+								<Select>
+									{
+										statusOptions
+									}
+								</Select>
 							</FormItem>
 						</Col>
 					</Row>

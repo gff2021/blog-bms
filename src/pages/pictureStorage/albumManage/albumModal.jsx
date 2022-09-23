@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Modal, Row, Col, Input, Select } from 'antd';
-import { modalTitleDic, albumStatusDic } from '../../constants';
+import { getOptions } from 'commonFunction';
+import { modalTitleDic, albumStatusList } from '../../constants';
 
 const FormItem = Form.Item;
 const formItemLayout = {
@@ -12,6 +13,7 @@ const AlbumModal = (props) => {
 	const { modalVisible, modalType, closeModal } = props;
 
 	const modalTitle = modalTitleDic[modalType];
+	const statusOptions = getOptions(albumStatusList);
 
 	return (
 		<Modal title={modalTitle} visible={modalVisible} onCancel={closeModal} footer={null} width={800}>
@@ -23,8 +25,10 @@ const AlbumModal = (props) => {
 						</FormItem>
 					</Col>
 					<Col span={24}>
-						<FormItem label='状态' name='status' {...formItemLayout}>
-							<Input />
+						<FormItem label='状态' name='status' {...formItemLayout} initialValue=''>
+							<Select>
+								{statusOptions}
+							</Select>
 						</FormItem>
 					</Col>
 				</Row>

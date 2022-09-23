@@ -4,7 +4,8 @@ import { EditOutlined } from '@ant-design/icons';
 import ArticalModal from './articalModal';
 import { reqAllTags } from '@/api/tagManage'
 import { reqQueryArticals, reqDeleteArtical } from '@/api/articalManage';
-import { articalStatusDic } from '@/constants/dictionary';
+import { getTextByValue } from 'commonFunction';
+import { articalStatusList } from '../../constants';
 
 const ArticalManage = () => {
 	const [tagList, setTagList] = useState([]);
@@ -128,10 +129,7 @@ const ArticalManage = () => {
 			align: 'center',
 			width: '10%',
 			render: text => {
-				const dicItem = articalStatusDic.find((item) => {
-					return text === item.value
-				});
-				return dicItem && dicItem['description'];
+				return getTextByValue(text, articalStatusList);
 			}
 		},
 		{

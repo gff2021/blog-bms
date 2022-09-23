@@ -1,11 +1,11 @@
-import ajax from './ajax';
+import request from 'request';
 
 const baseURL = '/admin-blog-cms/journal';
 
 // 查询日志
 export const reqQueryJournals = (params) => {
     return new Promise((resolve, reject) => {
-        ajax.postJson(baseURL + '/queryJournalList', params).then((output) => {
+        request.postJson(baseURL + '/queryJournalList', params).then((output) => {
             resolve(output);
         }).catch((err) => {
             reject(err);
@@ -16,7 +16,7 @@ export const reqQueryJournals = (params) => {
 // 新建日志
 export const reqCreateJournal = (params) => {
     return new Promise((resolve, reject) => {
-        ajax.postJson(baseURL + '/createJournal', params).then((output) => {
+        request.postJson(baseURL + '/createJournal', params).then((output) => {
             resolve(output);
         }).catch((err) => {
             reject(err)
@@ -27,7 +27,7 @@ export const reqCreateJournal = (params) => {
 // 编辑日志
 export const reqUpdateJournal = (params) => {
     return new Promise((resolve, reject) => {
-        ajax.postJson(baseURL + '/updateJournal', params).then((output) => {
+        request.postJson(baseURL + '/updateJournal', params).then((output) => {
             resolve(output);
         }).catch((err) => {
             reject(err)
@@ -38,7 +38,7 @@ export const reqUpdateJournal = (params) => {
 // 删除日志
 export const reqDeleteJournal = (params) => {
     return new Promise((resolve, reject) => {
-        ajax.postJson(baseURL + '/deleteJournal', params).then((output) => {
+        request.postJson(baseURL + '/deleteJournal', params).then((output) => {
             resolve(output);
         }).catch((err) => {
             reject(err)
